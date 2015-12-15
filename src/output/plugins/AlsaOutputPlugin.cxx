@@ -763,7 +763,7 @@ alsa_recover(AlsaOutput *ad, int err)
 	case SND_PCM_STATE_SETUP:
 	case SND_PCM_STATE_XRUN:
 		ad->period_position = 0;
-		err = snd_pcm_prepare(ad->pcm);
+		err = snd_pcm_recover(ad->pcm, err, 0);
 		break;
 	case SND_PCM_STATE_DISCONNECTED:
 		break;
